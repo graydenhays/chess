@@ -9,7 +9,6 @@ import java.util.Collection;
  * methods.
  */
 public interface ChessPiece {
-
     /**
      * The various different chess piece options
      */
@@ -21,6 +20,10 @@ public interface ChessPiece {
         ROOK,
         PAWN
     }
+
+    public void setType(ChessPiece.PieceType t);
+    public void setColor(ChessGame.TeamColor c);
+    public void setPosition(int r, int c);
 
     /**
      * @return Which team this chess piece belongs to
