@@ -25,7 +25,7 @@ public class KnightMoveTests {
 
 
     @Test
-    @DisplayName("Middle of Board")
+    @DisplayName("Middle of chess.Board")
     public void emptyBoard() {
         //white
         /*
@@ -78,7 +78,7 @@ public class KnightMoveTests {
 
 
     @Test
-    @DisplayName("Board Edge")
+    @DisplayName("chess.Board Edge")
     public void boardEdge() {
         //left
         /*
@@ -192,7 +192,7 @@ public class KnightMoveTests {
 
 
     @Test
-    @DisplayName("Board Corner")
+    @DisplayName("chess.Board Corner")
     public void boardCorner() {
         //bottom right
         /*
@@ -334,7 +334,7 @@ public class KnightMoveTests {
         for (ChessPosition allyPiece : allyPiecePositions) {
             ChessMove badCapture = TestFactory.getNewMove(position, allyPiece, null);
             Assertions.assertFalse(pieceMoves.contains(badCapture),
-                    "Piece moves contained invalid move: " + badCapture + " that would capture a ally piece");
+                    "chess.Piece moves contained invalid move: " + badCapture + " that would capture a ally piece");
         }
 
         //still available moves
@@ -385,7 +385,7 @@ public class KnightMoveTests {
         for (ChessPosition enemyPiece : enemyPiecePositions) {
             ChessMove capture = TestFactory.getNewMove(position, enemyPiece, null);
             Assertions.assertTrue(pieceMoves.contains(capture),
-                    "Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
+                    "chess.Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
             validMoves.add(capture);
         }
 

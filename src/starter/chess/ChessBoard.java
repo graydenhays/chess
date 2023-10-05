@@ -24,7 +24,7 @@ public interface ChessBoard {
      *         position
      */
     ChessPiece getPiece(ChessPosition position);
-
+    void removePiece(ChessPosition position);
     /**
      * Sets the board to the default starting board
      * (How the game of chess normally starts)

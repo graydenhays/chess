@@ -25,7 +25,7 @@ public class KingMoveTests {
 
 
     @Test
-    @DisplayName("Move Unhindered")
+    @DisplayName("chess.Move Unhindered")
     public void kingEmptyBoard() {
 
         /*
@@ -108,14 +108,14 @@ public class KingMoveTests {
         for (ChessPosition allyPiece : allyPiecePositions) {
             ChessMove badCapture = TestFactory.getNewMove(position, allyPiece, null);
             Assertions.assertFalse(pieceMoves.contains(badCapture),
-                    "Piece moves contained invalid move: " + badCapture + " that would capture a ally piece");
+                    "chess.Piece moves contained invalid move: " + badCapture + " that would capture a ally piece");
         }
 
         //Can capture unfriendlies
         for (ChessPosition enemyPiece : enemyPiecePositions) {
             ChessMove capture = TestFactory.getNewMove(position, enemyPiece, null);
             Assertions.assertTrue(pieceMoves.contains(capture),
-                    "Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
+                    "chess.Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
             validMoves.add(capture);
         }
 

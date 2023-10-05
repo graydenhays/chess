@@ -22,7 +22,7 @@ public class ChessGameTests {
     }
 
     @Test
-    @DisplayName("Normal Make Move")
+    @DisplayName("Normal Make chess.Move")
     public void validMoves() throws InvalidMoveException {
         /*
         | | | | | | | | |
@@ -209,7 +209,7 @@ public class ChessGameTests {
 
     
     @Test
-    @DisplayName("Invalid Make Move")
+    @DisplayName("Invalid Make chess.Move")
     public void invalidMoves() throws InvalidMoveException {
         board.resetBoard();
         game.setBoard(board);
@@ -681,7 +681,7 @@ public class ChessGameTests {
 
 
     @Test
-    @DisplayName("Full Game Checkmate")
+    @DisplayName("Full chess.Game Checkmate")
     public void scholarsMate() throws InvalidMoveException {
         board.resetBoard();
         game.setBoard(board);
@@ -792,7 +792,7 @@ public class ChessGameTests {
 
 
     @Nested
-    @DisplayName("Valid Move Tests")
+    @DisplayName("Valid chess.Move Tests")
     public class ValidMoveTests {
 
         private Set<ChessMove> validMoves;
@@ -867,7 +867,7 @@ public class ChessGameTests {
 
 
         @Test
-        @DisplayName("Piece Partially Trapped")
+        @DisplayName("chess.Piece Partially Trapped")
         public void moveIntoCheck() {
 
         /*
@@ -909,7 +909,7 @@ public class ChessGameTests {
 
 
         @Test
-        @DisplayName("Piece Completely Trapped")
+        @DisplayName("chess.Piece Completely Trapped")
         public void rookPinnedToKing() {
 
         /*
@@ -1020,7 +1020,7 @@ public class ChessGameTests {
 
 
         @Test
-        @DisplayName("King Cannot Move Into Check")
+        @DisplayName("King Cannot chess.Move Into Check")
         public void noPutSelfInDanger() {
 
         /*

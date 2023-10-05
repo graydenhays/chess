@@ -26,7 +26,7 @@ public class PawnMoveTests {
 
 
     @Test
-    @DisplayName("White Single Move")
+    @DisplayName("White Single chess.Move")
     public void emptyBoardWhite() {
 
         /*
@@ -54,7 +54,7 @@ public class PawnMoveTests {
 
 
     @Test
-    @DisplayName("Black Single Move")
+    @DisplayName("Black Single chess.Move")
     public void emptyBoardBlack() {
 
         /*
@@ -82,7 +82,7 @@ public class PawnMoveTests {
 
     //On a pawn's first move (from the starting position), they can move 2 spaces instead of just 1
     @Test
-    @DisplayName("White Double Move")
+    @DisplayName("White Double chess.Move")
     public void doubleMoveWhite() {
 
         /*
@@ -110,7 +110,7 @@ public class PawnMoveTests {
 
 
     @Test
-    @DisplayName("Black Double Move")
+    @DisplayName("Black Double chess.Move")
     public void doubleMoveBlack() {
 
         /*
@@ -204,7 +204,7 @@ public class PawnMoveTests {
 
 
     @Test
-    @DisplayName("White Move Blocked")
+    @DisplayName("White chess.Move Blocked")
     public void piecesInWayWhite() {
 
         /*
@@ -233,7 +233,7 @@ public class PawnMoveTests {
 
 
     @Test
-    @DisplayName("Black Move Blocked")
+    @DisplayName("Black chess.Move Blocked")
     public void piecesInWayBlack() {
 
         /*
@@ -262,7 +262,7 @@ public class PawnMoveTests {
 
 
     @Test
-    @DisplayName("Double Move Blocked")
+    @DisplayName("Double chess.Move Blocked")
     public void doubleMoveBlocked() {
 
         /*
@@ -338,12 +338,12 @@ public class PawnMoveTests {
         //invalid move
         ChessMove badCapture = TestFactory.getNewMove(position, allyPosition, null);
         Assertions.assertFalse(pieceMoves.contains(badCapture),
-                "Piece moves contained move: " + badCapture + " that would capture a ally piece");
+                "chess.Piece moves contained move: " + badCapture + " that would capture a ally piece");
 
         //expected moves
         ChessMove capture = TestFactory.getNewMove(position, enemyPosition, null);
         Assertions.assertTrue(pieceMoves.contains(capture),
-                "Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
+                "chess.Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
         validMoves.add(capture);
         validMoves.add(TestFactory.getNewMove(position, TestFactory.getNewPosition(5, 4), null));
 
@@ -386,13 +386,13 @@ public class PawnMoveTests {
         //expected moves
         ChessMove capture = TestFactory.getNewMove(position, enemyPosition, null);
         Assertions.assertTrue(pieceMoves.contains(capture),
-                "Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
+                "chess.Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
         validMoves.add(capture);
 
         //invalid moves
         ChessMove badCapture = TestFactory.getNewMove(position, TestFactory.getNewPosition(3, 3), null);
         Assertions.assertFalse(pieceMoves.contains(badCapture),
-                "Piece moves contained move: " + badCapture + ", which is not a valid move");
+                "chess.Piece moves contained move: " + badCapture + ", which is not a valid move");
 
         //check
         Assertions.assertEquals(validMoves, pieceMoves,

@@ -25,7 +25,7 @@ public class BishopMoveTests {
 
 
     @Test
-    @DisplayName("Move Until Edge")
+    @DisplayName("chess.Move Until Edge")
     public void bishopEmptyBoard() {
 
         /*
@@ -112,14 +112,14 @@ public class BishopMoveTests {
         for (ChessPosition allyPosition : allyPiecePositions) {
             ChessMove badCapture = TestFactory.getNewMove(position, allyPosition, null);
             Assertions.assertFalse(pieceMoves.contains(badCapture),
-                    "Piece moves contained move: " + badCapture + " that would capture a ally piece");
+                    "chess.Piece moves contained move: " + badCapture + " that would capture a ally piece");
         }
 
         //Can capture unfriendlies
         for (ChessPosition enemyPosition : enemyPiecePositions) {
             ChessMove capture = TestFactory.getNewMove(position, enemyPosition, null);
             Assertions.assertTrue(pieceMoves.contains(capture),
-                    "Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
+                    "chess.Piece moves did not contain valid move: " + capture + " that would capture an enemy piece");
         }
 
         // - - none

@@ -18,4 +18,6 @@ public interface ChessPosition {
      *         1 codes for the left row
      */
     int getColumn();
+    public void setColumn(int c);
+    public void setRow(int r);
 }
