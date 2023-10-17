@@ -4,7 +4,7 @@ import Models.GameModel;
 
 import java.util.Collection;
 /**
- * Data Access Object (DAO) class for managing GameModel objects in a data store.
+ * Data Access Object (DAO) class for managing games in the database.
  * This class provides methods for inserting, retrieving, updating, and finding GameModel objects.
  */
 public class GameDAO {
