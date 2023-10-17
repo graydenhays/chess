@@ -1,9 +1,20 @@
 package Services;
 
+import Models.User;
+
+/**
+ * Represents a login request. Contains a username and password.
+ */
 public class LoginRequest {
     private String username;
     private String password;
-    public LoginRequest() {
+
+    /**
+     * Creates a request to login for a specific user
+     *
+     * @param user
+     */
+    public LoginRequest(User user) {
 
     }
 

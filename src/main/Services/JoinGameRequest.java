@@ -1,25 +1,44 @@
 package Services;
 
+import Models.User;
+
+/**
+ * Represents a request to join a chess game. Contains a username and password.
+ */
 public class JoinGameRequest {
-    private String username;
-    private String password;
-    public JoinGameRequest()    {
+    private String playerColor;
+    private int gameID;
+    private String authToken;
+
+    /**
+     * Creates an instance of the JoinGameRequest class for a specific user
+     * @param user
+     */
+    public JoinGameRequest(User user)    {
 
     }
 
-    public String getPassword() {
-        return password;
+    public String getPlayerColor() {
+        return playerColor;
     }
 
-    public String getUsername() {
-        return username;
+    public void setPlayerColor(String playerColor) {
+        this.playerColor = playerColor;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public int getGameID() {
+        return gameID;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setGameID(int gameID) {
+        this.gameID = gameID;
+    }
+
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
     }
 }

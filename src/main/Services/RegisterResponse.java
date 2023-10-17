@@ -1,9 +1,16 @@
 package Services;
 
+/**
+ * Creates a response to a RegisterRequest. Contains a username, password, and authToken
+ */
 public class RegisterResponse {
     private String message;
     private String authToken;
     private String username;
+
+    /**
+     * Creates an instance of the RegisterResponse class
+     */
     public RegisterResponse()   {
 
     }

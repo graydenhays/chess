@@ -1,11 +1,26 @@
 package Services;
-
+/**
+ * Represents a request to join a chess game. Contains a username and password.
+ */
 public class JoinGameResponse {
     private String message;
     private String authToken;
-    private String username;
+    private String playerColor;
+    private int gameID;
+
+    /**
+     * Creates an instance of the JoinGameResponse class
+     */
     JoinGameResponse()  {
 
+    }
+
+    public String getPlayerColor() {
+        return playerColor;
+    }
+
+    public void setPlayerColor(String playerColor) {
+        this.playerColor = playerColor;
     }
 
     public String getMessage() {
@@ -16,16 +31,8 @@ public class JoinGameResponse {
         return authToken;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
     public void setAuthToken(String authToken) {
         this.authToken = authToken;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public void setMessage(String message) {
