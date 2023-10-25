@@ -6,8 +6,17 @@ import Models.User;
  * Represents a request to join a chess game. Contains a username and password.
  */
 public class JoinGameRequest {
+    /**
+     * String representation of player color
+     */
     private String playerColor;
+    /**
+     * Integer for the request's gameID
+     */
     private int gameID;
+    /**
+     * String for the request's authentication token
+     */
     private String authToken;
 
     /**

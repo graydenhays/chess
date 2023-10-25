@@ -6,6 +6,9 @@ import Models.AuthToken;
  * Represents a request to logout a specific user
  */
 public class LogoutRequest {
+    /**
+     * Authentication token for request
+     */
     private AuthToken authorization;
 
     /**

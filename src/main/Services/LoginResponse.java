@@ -4,8 +4,17 @@ package Services;
  * Represents a response to a login request to a chess game. Contains an authToken, a username, and potentially an error message.
  */
 public class LoginResponse {
+    /**
+     * Potential error message for response
+     */
     private String message;
+    /**
+     * String representation for authentication token for response
+     */
     private String authToken;
+    /**
+     * String representation for response's username
+     */
     private String username;
 
     /**

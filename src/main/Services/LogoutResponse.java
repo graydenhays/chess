@@ -6,7 +6,13 @@ import Models.AuthToken;
  * Represents a response to a logout request for a chess game. Contains an authToken and potentially an error message.
  */
 public class LogoutResponse {
+    /**
+     * Potential error message for response
+     */
     private String message;
+    /**
+     * Authentication token for the response
+     */
     private AuthToken authorization;
 
     /**

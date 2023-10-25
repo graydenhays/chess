@@ -6,7 +6,13 @@ import Models.User;
  * Represents a login request. Contains a username and password.
  */
 public class LoginRequest {
+    /**
+     * String representation for request's username
+     */
     private String username;
+    /**
+     * String representation for request's password
+     */
     private String password;
 
     /**

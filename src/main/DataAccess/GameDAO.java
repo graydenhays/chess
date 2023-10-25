@@ -1,13 +1,32 @@
 package DataAccess;
 
 import Models.GameModel;
+import Models.User;
+import dataAccess.DataAccessException;
 
 import java.util.Collection;
+import java.util.HashMap;
+
 /**
  * Data Access Object (DAO) class for managing games in the database.
  * This class provides methods for inserting, retrieving, updating, and finding GameModel objects.
  */
 public class GameDAO {
+    /**
+     * A static HashMap class variable for storing games
+     */
+    public static HashMap<Integer, GameModel> gameList = new HashMap<>();
+
+    /**
+     * Creates an instance of the GameModel class
+     *
+     * @param game
+     * @throws DataAccessException
+     */
+    void CreateGame(GameModel game) throws DataAccessException {
+
+    }
+
     /**
      * Inserts new game into the database.
      *
@@ -40,8 +59,27 @@ public class GameDAO {
      * Updates game in the database. Replaces the chessGame string that corresponds to a given gameID with a new chessGame string.
      *
      * @param gameID The unique identifier of the game to update.
+     * @param game The game to be updated
      */
-    void UpdateGame(int gameID) {
+    void UpdateGame(int gameID, GameModel game) {
+
+    }
+
+    /**
+     * Claims a spot in the game. Saves a player's username as a white or black player.
+     *
+     * @param username
+     * @param game
+     * @param playerColor
+     */
+    void ClaimSpot(String username, GameModel game, String playerColor) {
+
+    }
+
+    /**
+     * Clears all Game data from the database
+     */
+    void Clear()    {
 
     }
 }

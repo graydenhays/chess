@@ -6,8 +6,17 @@ import Models.AuthToken;
  * Represents a response to a request to create a new game
  */
 public class CreateGameResponse {
+    /**
+     * Integer for the response's gameID
+     */
     private int gameID;
+    /**
+     * Authentication token for the response
+     */
     private AuthToken authorization;
+    /**
+     * Potential error message for the response
+     */
     private String message;
 
     /**

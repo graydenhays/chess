@@ -1,5 +1,10 @@
 package Handlers;
 
-public class LoginHandler {
+import spark.Request;
+import spark.Response;
 
+public class LoginHandler {
+    public Object handleRequest(Request req, Response res) {
+        return null;
+    }
 }

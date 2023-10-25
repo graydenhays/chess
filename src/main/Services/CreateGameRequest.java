@@ -6,7 +6,13 @@ import Models.AuthToken;
  * Represents a request to create a new game
  */
 public class CreateGameRequest {
+    /**
+     * AuthToken for the CreateGame request
+     */
     private AuthToken authorization;
+    /**
+     * String representation for the gameName
+     */
     private String gameName;
 
     /**
