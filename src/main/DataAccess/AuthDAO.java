@@ -1,10 +1,10 @@
 package DataAccess;
 
 import Models.AuthToken;
-import Models.User;
 import dataAccess.DataAccessException;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 /**
  * Data Access Object (DAO) class for managing AuthToken objects in the database.
@@ -19,18 +19,27 @@ public class AuthDAO {
     /**
      * Creates an instance of the AuthToken class
      *
-     * @param auth
+     * @param username
      * @throws DataAccessException
      */
-    void CreateAuth(AuthToken auth) throws DataAccessException {
-
+    public AuthToken CreateAuth(String username) throws DataAccessException {
+        AuthToken auth = new AuthToken();
+        auth.setAuthToken(UUID.randomUUID().toString());
+        auth.setUsername(username);
+        authList.put(auth.getAuthToken(), auth);
+        return auth;
     }
 
     /**
-     * Removes a game from the database
+     * Removes an AuthToken from the database
      */
-    public void Remove()   {
-
+    public void Remove(String authToken) throws DataAccessException   {
+        if(authList.containsKey(authToken)) {
+            authList.remove(authToken);
+        }
+        else {
+            throw new DataAccessException("Error: cannot find authentication token");
+        }
     }
 
     /**
@@ -38,24 +47,34 @@ public class AuthDAO {
      *
      * @param auth The AuthToken object to insert.
      */
-    public void Insert(AuthToken auth)  {
-
+    public void Insert(AuthToken auth) throws DataAccessException  {
+        if(!authList.containsKey(auth.getAuthToken())) {
+            authList.put(auth.getAuthToken(), auth);
+        }
+        else    {
+            throw new DataAccessException("Error: auth token already exists");
+        }
     }
 
     /**
      * Retrieves a specified AuthToken from the database by username
      *
-     * @param username The unique identifier of the AuthToken to find.
+     * @param authToken The unique identifier of the AuthToken to find.
      * @return The found AuthToken object, or null if not found.
      */
-    public User Find(String username)   {
-        return null;
+    public AuthToken Find(String authToken) throws DataAccessException   {
+        if(authList.containsKey(authToken))  {
+            return authList.get(authToken);
+        }
+        else {
+            throw new DataAccessException("Error: token not found");
+        }
     }
 
     /**
      * Clears all AuthToken data from the database
      */
-    void Clear()    {
-
+    public void Clear() throws DataAccessException    {
+        authList.clear();
     }
 }

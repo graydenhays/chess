@@ -21,8 +21,13 @@ public class UserDAO    {
      * @param u
      * @throws DataAccessException
      */
-    void CreateUser(User u) throws DataAccessException {
-
+    public void CreateUser(User u) throws DataAccessException {
+        if(userList.containsKey(u.username))    {
+            throw new DataAccessException("Error: already taken");
+        }
+        else {
+            userList.put(u.username, u);
+        }
     }
 
     /**
@@ -31,7 +36,7 @@ public class UserDAO    {
      * @param user The User object to insert.
      */
     public void Insert(User user)  {
-
+        userList.put(user.username, user);
     }
 
     /**
@@ -40,15 +45,20 @@ public class UserDAO    {
      * @param username The unique identifier of the user to find.
      * @return The found User object, or null if not found.
      */
-    public User Find(String username)   {
-        return null;
+    public User Find(String username) throws DataAccessException   {
+        if(userList.containsKey(username))  {
+            return userList.get(username);
+        }
+        else {
+            throw new DataAccessException("Error: user not found");
+        }
     }
 
     /**
      * Clears all User data from the database
      */
-    void Clear()    {
-
+    public void Clear() throws DataAccessException    {
+        userList.clear();
     }
 
 }

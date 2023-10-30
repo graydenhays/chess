@@ -1,12 +1,13 @@
 import Handlers.*;
-import com.google.gson.Gson;
 import spark.*;
-import java.util.*;
 
 public class Server {
+    public static void main(String[] args) {
+        new Server().run();
+    }
     private void run()  {
         Spark.port(8080);
-        Spark.externalStaticFileLocation("public");
+        Spark.externalStaticFileLocation("src/web");
 
         Spark.post("/user", (req, res) -> (new RegisterHandler()).handleRequest(req, res));
         Spark.delete("/db", (req, res) -> (new ClearHandler()).handleRequest(req, res));
