@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class JoinGameHandler {
     public Object handleRequest(Request req, Response res) {
+
         JoinGameService service = new JoinGameService();
         String authToken = req.headers("authorization");
 

@@ -5,6 +5,8 @@ import DataAccess.GameDAO;
 import Responses.ListGamesResponse;
 import dataAccess.DataAccessException;
 
+import java.sql.SQLException;
+
 /**
  * Implements the logic for an HTTP GET method to get a list of all games
  */
@@ -23,13 +25,13 @@ public class ListGamesService {
         try {
             authDAO.Find(authToken);
         }
-        catch (DataAccessException e)   {
+        catch (DataAccessException | SQLException e)   {
             response.setStatus(401);
         }
         try {
             response.setGames(gameDAO.FindAll());
         }
-        catch (DataAccessException e)   {
+        catch (DataAccessException | SQLException e)   {
             response.setStatus(500);
         }
         return response;

@@ -6,6 +6,8 @@ import Models.User;
 import Responses.RegisterResponse;
 import dataAccess.DataAccessException;
 
+import java.sql.SQLException;
+
 /**
  * Implements the logic for an HTTP POST method to register a new user
  */
@@ -25,12 +27,12 @@ public class RegisterService {
             userDAO.Find(u.getUsername());
             response.setStatus(403);
         }
-        catch (DataAccessException e)   {
+        catch (DataAccessException | SQLException e)   {
             try {
-                userDAO.CreateUser(u);
+                userDAO.Insert(u);
                 response.setAuthToken(authDAO.CreateAuth(u.getUsername()).getAuthToken());
             }
-            catch (DataAccessException ex)   {
+            catch (DataAccessException | SQLException ex)   {
                 response.setStatus(500);
             }
         }

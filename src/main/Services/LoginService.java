@@ -5,6 +5,8 @@ import DataAccess.UserDAO;
 import Models.User;
 import Responses.LoginResponse;
 import dataAccess.DataAccessException;
+
+import java.sql.SQLException;
 import java.util.Objects;
 
 /**
@@ -29,13 +31,13 @@ public class LoginService {
                 response.setStatus(401);
             }
         }
-        catch (DataAccessException e)   {
+        catch (DataAccessException | SQLException e)   {
             response.setStatus(401);
         }
         try {
             response.setAuthToken(authDAO.CreateAuth(u.getUsername()).getAuthToken());
         }
-        catch (DataAccessException ex)   {
+        catch (DataAccessException | SQLException ex)   {
             response.setStatus(500);
         }
         return response;

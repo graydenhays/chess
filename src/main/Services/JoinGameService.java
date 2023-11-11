@@ -6,6 +6,8 @@ import Requests.JoinGameRequest;
 import Responses.JoinGameResponse;
 import dataAccess.DataAccessException;
 
+import java.sql.SQLException;
+
 /**
  * Implements the logic for an HTTP PUT method to add a specific color to the game
  */
@@ -20,6 +22,7 @@ public class JoinGameService {
      * @return JoinGameResponse object
      */
     public JoinGameResponse joinGame(JoinGameRequest request)   {
+
         JoinGameResponse response = new JoinGameResponse();
         response.setPlayerColor(request.getPlayerColor());
         response.setAuthToken(request.getAuthToken());
@@ -35,7 +38,7 @@ public class JoinGameService {
             gameDAO.Find(request.getGameID());
             authDAO.Find(request.getAuthToken());
         }
-        catch (DataAccessException e)   {
+        catch (DataAccessException | SQLException e)   {
             response.setStatus(401);
             return response;
         }
@@ -44,7 +47,7 @@ public class JoinGameService {
         try {
             username = authDAO.Find(request.getAuthToken()).getUsername();
         }
-        catch (DataAccessException e)   {
+        catch (DataAccessException | SQLException e)   {
             response.setStatus(500);
             return response;
         }
@@ -56,7 +59,7 @@ public class JoinGameService {
         try {
             gameDAO.ClaimSpot(username, gameDAO.Find(request.getGameID()), request.getPlayerColor());
         }
-        catch (DataAccessException e)   {
+        catch (DataAccessException | SQLException e)   {
             response.setStatus(403);
         }
 

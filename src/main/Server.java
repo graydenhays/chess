@@ -1,11 +1,22 @@
 import Handlers.*;
+import dataAccess.DataAccessException;
+import dataAccess.Database;
 import spark.*;
+
+import java.sql.SQLException;
 
 public class Server {
     public static void main(String[] args) {
         new Server().run();
     }
     private void run()  {
+        try {
+            Database db = new Database();
+            db.configureDatabase();
+        } catch (SQLException | DataAccessException e) {
+            throw new RuntimeException(e);
+        }
+
         Spark.port(8080);
         Spark.externalStaticFileLocation("src/web");
 

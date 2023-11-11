@@ -13,6 +13,8 @@ import Services.*;
 import dataAccess.DataAccessException;
 import org.junit.jupiter.api.*;
 
+import java.sql.SQLException;
+
 public class MyUnitTests {
     AuthDAO authDAO = new AuthDAO();
     GameDAO gameDAO = new GameDAO();
@@ -24,15 +26,15 @@ public class MyUnitTests {
         service.clear();
     }
     @Test
-    public void ClearSuccess() throws DataAccessException {
+    public void ClearSuccess() throws DataAccessException, SQLException {
         String authToken = "jsdafj9823r8239";
         AuthToken auth = new AuthToken();
         auth.setAuthToken(authToken);
-        auth.setUsername("Billy Jean");
+        auth.setUsername("BillyJean");
 
         User user = new User();
-        user.setUsername("George Michael");
-        user.setPassword("Careless Whisper");
+        user.setUsername("GeorgeMichael");
+        user.setPassword("CarelessWhisper");
         user.setEmail("crazysaxman@mygmail.com");
 
         authDAO.Insert(auth);
@@ -45,7 +47,7 @@ public class MyUnitTests {
         Assertions.assertThrows(DataAccessException.class, () -> authDAO.Find(authToken));
     }
     @Test
-    public void CreateGameSuccess() throws DataAccessException {
+    public void CreateGameSuccess() throws DataAccessException, SQLException {
         String authToken = "jsdafj9823r8239";
         AuthToken auth = new AuthToken();
         auth.setAuthToken(authToken);
@@ -54,7 +56,7 @@ public class MyUnitTests {
         authDAO.Insert(auth);
 
         GameModel game = new GameModel();
-        game.setGameName("New Game");
+        game.setGameName("NewGame");
 
         CreateGameService service = new CreateGameService();
 
@@ -65,17 +67,17 @@ public class MyUnitTests {
         String authToken = "jsdafj9823r8239";
 
         GameModel game = new GameModel();
-        game.setGameName("New Game");
+        game.setGameName("NewGame");
 
         CreateGameService service = new CreateGameService();
 
         Assertions.assertEquals(401, service.createGame(game, authToken));
     }
     @Test
-    public void JoinGameSuccess() throws DataAccessException {
+    public void JoinGameSuccess() throws DataAccessException, SQLException {
         User user = new User();
-        user.setUsername("George Michael");
-        user.setPassword("Careless Whisper");
+        user.setUsername("GeorgeMichael");
+        user.setPassword("CarelessWhisper");
         user.setEmail("crazysaxman@mygmail.com");
 
         userDAO.Insert(user);
@@ -83,28 +85,29 @@ public class MyUnitTests {
         String authToken = "jsdafj9823r8239";
         AuthToken auth = new AuthToken();
         auth.setAuthToken(authToken);
-        auth.setUsername("George Michael");
+        auth.setUsername("GeorgeMichael");
 
         authDAO.Insert(auth);
 
         GameModel game = new GameModel();
         game.setGameID(123);
+        game.setGameName("NewGame");
         gameDAO.Insert(game);
 
         JoinGameRequest request = new JoinGameRequest();
-        request.setPlayerColor("black");
+        request.setPlayerColor("BLACK");
         request.setGameID(123);
         request.setAuthToken(auth.getAuthToken());
 
         JoinGameService service = new JoinGameService();
 
-        Assertions.assertEquals(200, service.joinGame(request).getStatus());
+        Assertions.assertEquals(game.getGameID(), service.joinGame(request).getGameID());
     }
     @Test
-    public void JoinGameFailure() throws DataAccessException {
+    public void JoinGameFailure() throws DataAccessException, SQLException {
         User user = new User();
-        user.setUsername("George Michael");
-        user.setPassword("Careless Whisper");
+        user.setUsername("GeorgeMichael");
+        user.setPassword("CarelessWhisper");
         user.setEmail("crazysaxman@mygmail.com");
 
         userDAO.Insert(user);
@@ -112,10 +115,10 @@ public class MyUnitTests {
         String authToken = "jsdafj9823r8239";
         AuthToken auth = new AuthToken();
         auth.setAuthToken(authToken);
-        auth.setUsername("George Michael");
+        auth.setUsername("GeorgeMichael");
 
         JoinGameRequest request = new JoinGameRequest();
-        request.setPlayerColor("black");
+        request.setPlayerColor("BLACK");
         request.setGameID(123);
         request.setAuthToken(auth.getAuthToken());
 
@@ -130,19 +133,19 @@ public class MyUnitTests {
         Assertions.assertEquals(401, service.joinGame(request).getStatus());
     }
     @Test
-    public void ListGamesSuccess() throws DataAccessException {
+    public void ListGamesSuccess() throws DataAccessException, SQLException {
         String authToken = "jsdafj9823r8239";
         AuthToken auth = new AuthToken();
         auth.setAuthToken(authToken);
-        auth.setUsername("George Michael");
+        auth.setUsername("GeorgeMichael");
         authDAO.Insert(auth);
 
         GameModel game = new GameModel();
-        game.setGameName("New Game");
+        game.setGameName("NewGame");
         game.setGameID(123);
 
         GameModel game2 = new GameModel();
-        game.setGameName("New Game2");
+        game.setGameName("NewGame2");
         game.setGameID(125);
 
         gameDAO.Insert(game);
@@ -154,15 +157,15 @@ public class MyUnitTests {
 
     }
     @Test
-    public void ListGamesFailure() throws DataAccessException {
+    public void ListGamesFailure() throws DataAccessException, SQLException {
         String auth = "ajl;ksdjfkas;ldfkjm";
 
         GameModel game = new GameModel();
-        game.setGameName("New Game");
+        game.setGameName("NewGame");
         game.setGameID(123);
 
         GameModel game2 = new GameModel();
-        game.setGameName("New Game2");
+        game.setGameName("NewGame2");
         game.setGameID(125);
 
         gameDAO.Insert(game);
@@ -173,10 +176,10 @@ public class MyUnitTests {
         Assertions.assertEquals(401, service.listGames(auth).getStatus());
     }
     @Test
-    public void LoginSuccess() throws DataAccessException {
+    public void LoginSuccess() throws DataAccessException, SQLException {
         User user = new User();
-        user.setUsername("George Michael");
-        user.setPassword("Careless Whisper");
+        user.setUsername("GeorgeMichael");
+        user.setPassword("CarelessWhisper");
         user.setEmail("crazysaxman@mygmail.com");
         userDAO.Insert(user);
 
@@ -191,8 +194,8 @@ public class MyUnitTests {
     @Test
     public void LoginFailure() throws DataAccessException {
         User user = new User();
-        user.setUsername("George Michael");
-        user.setPassword("Careless Whisper");
+        user.setUsername("GeorgeMichael");
+        user.setPassword("CarelessWhisper");
         user.setEmail("crazysaxman@mygmail.com");
 
         LoginService service = new LoginService();
@@ -202,17 +205,17 @@ public class MyUnitTests {
         Assertions.assertEquals(401, response.getStatus());
     }
     @Test
-    public void LogoutSuccess() throws DataAccessException {
+    public void LogoutSuccess() throws DataAccessException, SQLException {
         User user = new User();
-        user.setUsername("George Michael");
-        user.setPassword("Careless Whisper");
+        user.setUsername("GeorgeMichael");
+        user.setPassword("CarelessWhisper");
         user.setEmail("crazysaxman@mygmail.com");
         userDAO.Insert(user);
 
         String authToken = "jsdafj9823r8239";
         AuthToken auth = new AuthToken();
         auth.setAuthToken(authToken);
-        auth.setUsername("George Michael");
+        auth.setUsername("GeorgeMichael");
         authDAO.Insert(auth);
 
         LogoutService service = new LogoutService();
@@ -220,27 +223,27 @@ public class MyUnitTests {
         Assertions.assertEquals(200, service.logout(authToken));
     }
     @Test
-    public void LogoutFailure() throws DataAccessException {
+    public void LogoutFailure() throws DataAccessException, SQLException {
         User user = new User();
-        user.setUsername("George Michael");
-        user.setPassword("Careless Whisper");
+        user.setUsername("GeorgeMichael");
+        user.setPassword("CarelessWhisper");
         user.setEmail("crazysaxman@mygmail.com");
         userDAO.Insert(user);
 
         String authToken = "jsdafj9823r8239";
         AuthToken auth = new AuthToken();
         auth.setAuthToken(authToken);
-        auth.setUsername("George Michael");
+        auth.setUsername("GeorgeMichael");
 
         LogoutService service = new LogoutService();
 
         Assertions.assertEquals(401, service.logout(authToken));
     }
     @Test
-    public void RegisterSuccess() throws DataAccessException {
+    public void RegisterSuccess() throws DataAccessException, SQLException {
         User user = new User();
-        user.setUsername("George Michael");
-        user.setPassword("Careless Whisper");
+        user.setUsername("GeorgeMichael");
+        user.setPassword("CarelessWhisper");
         user.setEmail("crazysaxman@mygmail.com");
 
         RegisterService service = new RegisterService();
@@ -253,10 +256,10 @@ public class MyUnitTests {
         Assertions.assertNotNull(response.getAuthToken());
     }
     @Test
-    public void RegisterFailure() throws DataAccessException {
+    public void RegisterFailure() throws DataAccessException, SQLException {
         User user = new User();
-        user.setUsername("George Michael");
-        user.setPassword("Careless Whisper");
+        user.setUsername("GeorgeMichael");
+        user.setPassword("CarelessWhisper");
         user.setEmail("crazysaxman@mygmail.com");
         userDAO.Insert(user);
 

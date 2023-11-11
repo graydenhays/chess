@@ -1,6 +1,7 @@
 package Responses;
 
 import Models.GameModel;
+import chess.Game;
 
 import java.util.Collection;
 

@@ -3,6 +3,8 @@ package Services;
 import DataAccess.AuthDAO;
 import dataAccess.DataAccessException;
 
+import java.sql.SQLException;
+
 /**
  * Implements the logic for an HTTP DELETE method to log out the user represented by the authentication token
  */
@@ -18,7 +20,7 @@ public class LogoutService {
         try {
             authDAO.Remove(authToken);
         }
-        catch(DataAccessException e)    {
+        catch(DataAccessException | SQLException e)    {
             return 401;
         }
         return 200;

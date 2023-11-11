@@ -2,6 +2,7 @@ package Handlers;
 
 import Models.GameModel;
 import Services.CreateGameService;
+import chess.Game;
 import com.google.gson.Gson;
 import spark.Request;
 import spark.Response;
@@ -16,6 +17,7 @@ public class CreateGameHandler {
         String authToken = req.headers("authorization");
 
         GameModel game = new Gson().fromJson(req.body(), GameModel.class);
+        game.setGame(new Game());
 
         if(game.getGameName() == null)  {
             status = 400;

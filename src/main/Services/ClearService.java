@@ -5,6 +5,8 @@ import DataAccess.GameDAO;
 import DataAccess.UserDAO;
 import dataAccess.DataAccessException;
 
+import java.sql.SQLException;
+
 /**
  * Implements the logic for an HTTP DELETE method to clear the database
  */
@@ -24,7 +26,7 @@ public class ClearService {
             gameDAO.Clear();
             userDAO.Clear();
         }
-        catch(DataAccessException e)    {
+        catch(DataAccessException | SQLException e)    {
             return 500;
         }
         return 200;
