@@ -14,7 +14,7 @@ public class RegisterResponse {
     /**
      * String representation of an authentication token for request
      */
-    private String authToken;
+    private String authorization;
     /**
      * String representation of a username for the request
      */
@@ -34,11 +34,11 @@ public class RegisterResponse {
 
 
     public RegisterResponse()   {
-        authToken = UUID.randomUUID().toString();
+        authorization = UUID.randomUUID().toString();
     }
 
     public String getAuthToken() {
-        return authToken;
+        return authorization;
     }
 
     public String getMessage() {
@@ -50,7 +50,7 @@ public class RegisterResponse {
     }
 
     public void setAuthToken(String authToken) {
-        this.authToken = authToken;
+        this.authorization = authToken;
     }
 
     public void setUsername(String username) {

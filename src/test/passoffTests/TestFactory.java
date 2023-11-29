@@ -19,21 +19,21 @@ public class TestFactory {
     }
 
     public static ChessPiece getNewPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type){
-		ChessPiece piece = new Piece();
+		Piece piece = new Piece();
         piece.setColor(pieceColor);
         piece.setType(type);
         return piece;
     }
 
     public static ChessPosition getNewPosition(Integer row, Integer col){
-        ChessPosition pos = new Position();
+        Position pos = new Position();
         pos.setRow(row - 1);
         pos.setColumn(col - 1);
 		return pos;
     }
 
     public static ChessMove getNewMove(ChessPosition startPosition, ChessPosition endPosition, ChessPiece.PieceType promotionPiece){
-        ChessMove move = new Move();
+        Move move = new Move();
         move.setStartPosition(startPosition);
         move.setEndPosition(endPosition);
         move.setPromotionPiece(promotionPiece);

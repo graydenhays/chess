@@ -1,6 +1,5 @@
-package DataAccess;
+package Adapters;
 
-import chess.Board;
 import chess.ChessBoard;
 import com.google.gson.*;
 import chess.Game;

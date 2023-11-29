@@ -9,7 +9,7 @@ public class LogoutRequest {
     /**
      * Authentication token for request
      */
-    private AuthToken authorization;
+    private String authorization;
 
     /**
      * Creates an instance of the LogoutRequest class
@@ -18,11 +18,11 @@ public class LogoutRequest {
 
     }
 
-    public AuthToken getAuthorization() {
+    public String getAuthorization() {
         return authorization;
     }
 
-    public void setAuthorization(AuthToken authorization) {
+    public void setAuthorization(String authorization) {
         this.authorization = authorization;
     }
 }

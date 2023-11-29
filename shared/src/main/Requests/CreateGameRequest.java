@@ -1,7 +1,5 @@
 package Requests;
 
-import Models.AuthToken;
-
 /**
  * Represents a request to create a new game
  */
@@ -9,7 +7,7 @@ public class CreateGameRequest {
     /**
      * AuthToken for the CreateGame request
      */
-    private String authToken;
+    private String authorization;
     /**
      * String representation for the gameName
      */
@@ -23,11 +21,11 @@ public class CreateGameRequest {
     }
 
     public String getAuthorization() {
-        return authToken;
+        return authorization;
     }
 
     public void setAuthorization(String authorization) {
-        this.authToken = authorization;
+        this.authorization = authorization;
     }
 
     public String getGameName() {

@@ -12,7 +12,7 @@ public class CreateGameResponse {
     /**
      * Authentication token for the response
      */
-    private String authToken;
+    private String authorization;
     /**
      * Potential error message for the response
      */
@@ -43,11 +43,11 @@ public class CreateGameResponse {
     }
 
     public String getAuthorization() {
-        return authToken;
+        return authorization;
     }
 
     public void setAuthorization(String authorization) {
-        this.authToken = authorization;
+        this.authorization = authorization;
     }
 
     public String getMessage() {

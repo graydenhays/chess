@@ -1,5 +1,7 @@
 package DataAccess;
 
+import Adapters.boardAdapter;
+import Adapters.pieceAdapter;
 import Models.GameModel;
 import chess.*;
 import com.google.gson.Gson;
@@ -177,7 +179,7 @@ public class GameDAO {
             int gameID = Insert(game);
             game.setGameID(gameID);
         }
-        if(Objects.equals(playerColor, "WHITE"))  {
+        if(Objects.equals(playerColor, "WHITE") || Objects.equals(playerColor, "white"))  {
             if(game.getWhiteUsername() == null) {
                 game.setWhiteUsername(username);
             }
@@ -185,7 +187,7 @@ public class GameDAO {
                 throw new DataAccessException("Error: spot already taken");
             }
         }
-        else if(Objects.equals(playerColor, "BLACK")){
+        else if(Objects.equals(playerColor, "BLACK") || Objects.equals(playerColor, "black")){
             if(game.getBlackUsername() == null) {
                 game.setBlackUsername(username);
             }

@@ -1,8 +1,7 @@
-package DataAccess;
+package Adapters;
 
 import chess.Board;
 import chess.ChessPiece;
-import chess.Piece;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

@@ -16,7 +16,7 @@ public class JoinGameRequest {
     /**
      * String for the request's authentication token
      */
-    private String authToken;
+    private String authorization;
 
     /**
      * Creates an instance of the JoinGameRequest class for a specific user
@@ -42,10 +42,10 @@ public class JoinGameRequest {
     }
 
     public String getAuthToken() {
-        return authToken;
+        return authorization;
     }
 
     public void setAuthToken(String authToken) {
-        this.authToken = authToken;
+        this.authorization = authToken;
     }
 }

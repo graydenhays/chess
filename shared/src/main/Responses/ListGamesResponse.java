@@ -1,7 +1,6 @@
 package Responses;
 
 import Models.GameModel;
-import chess.Game;
 
 import java.util.Collection;
 
@@ -13,7 +12,7 @@ public class ListGamesResponse {
     /**
      * Authorization token for the response
      */
-    private String authToken;
+    private String authorization;
     /**
      * GameModel instance for the response
      */
@@ -39,11 +38,11 @@ public class ListGamesResponse {
     }
 
     public String getAuthorization() {
-        return authToken;
+        return authorization;
     }
 
     public void setAuthorization(String authToken) {
-        this.authToken = authToken;
+        this.authorization = authToken;
     }
 
     public Collection<GameModel> getGames() {

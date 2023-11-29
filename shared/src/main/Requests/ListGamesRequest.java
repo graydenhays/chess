@@ -9,7 +9,7 @@ public class ListGamesRequest {
     /**
      * Authentication token for the request
      */
-    private AuthToken authorization;
+    private String authorization;
 
     /**
      * Creates an instance of the ListGamesRequest class
@@ -18,11 +18,11 @@ public class ListGamesRequest {
 
     }
 
-    public AuthToken getAuthorization() {
+    public String getAuthorization() {
         return authorization;
     }
 
-    public void setAuthorization(AuthToken authorization) {
+    public void setAuthorization(String authorization) {
         this.authorization = authorization;
     }
 }

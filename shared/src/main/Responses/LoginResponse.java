@@ -11,7 +11,7 @@ public class LoginResponse {
     /**
      * String representation for authentication token for response
      */
-    private String authToken;
+    private String authorization;
     /**
      * String representation for response's username
      */
@@ -37,7 +37,7 @@ public class LoginResponse {
     }
 
     public String getAuthToken() {
-        return authToken;
+        return authorization;
     }
 
     public String getMessage() {
@@ -49,7 +49,7 @@ public class LoginResponse {
     }
 
     public void setAuthToken(String authToken) {
-        this.authToken = authToken;
+        this.authorization = authToken;
     }
 
     public void setMessage(String message) {

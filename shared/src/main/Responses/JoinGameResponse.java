@@ -10,7 +10,7 @@ public class JoinGameResponse {
     /**
      * String authentication token for the response
      */
-    private String authToken;
+    private String authorization;
     /**
      * String representation of player color for the response
      */
@@ -57,11 +57,11 @@ public class JoinGameResponse {
     }
 
     public String getAuthToken() {
-        return authToken;
+        return authorization;
     }
 
     public void setAuthToken(String authToken) {
-        this.authToken = authToken;
+        this.authorization = authToken;
     }
 
     public void setMessage(String message) {
